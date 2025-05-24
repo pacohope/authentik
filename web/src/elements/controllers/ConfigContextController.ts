@@ -1,13 +1,14 @@
 import { DEFAULT_CONFIG } from "#common/api/config";
 import { EVENT_REFRESH } from "#common/constants";
 import { isAbortError } from "#common/errors/network";
+
 import { AKConfigMixin, AuthentikConfigContext } from "#elements/mixins/config";
 import type { ReactiveElementHost } from "#elements/types";
 
+import { Config, RootApi } from "@goauthentik/api";
+
 import { Context, ContextProvider } from "@lit/context";
 import type { ReactiveController } from "lit";
-
-import { Config, RootApi } from "@goauthentik/api";
 
 /**
  * A controller that provides the application configuration to the element.

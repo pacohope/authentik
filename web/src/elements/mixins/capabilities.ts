@@ -1,5 +1,5 @@
 import { AKConfigMixin } from "#elements/mixins/config";
-import { createMixin } from "@goauthentik/elements/types";
+import { createMixin } from "#elements/types";
 
 import { CapabilitiesEnum } from "@goauthentik/api";
 
