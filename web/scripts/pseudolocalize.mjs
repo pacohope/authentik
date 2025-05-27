@@ -9,8 +9,8 @@
 import { PackageRoot } from "#paths/node";
 
 import { readFileSync } from "node:fs";
-import path from "node:path";
 import pseudolocale from "pseudolocale";
+import * as path from "node:path";
 
 import { makeFormatter } from "@lit/localize-tools/lib/formatters/index.js";
 import { sortProgramMessages } from "@lit/localize-tools/lib/messages.js";
