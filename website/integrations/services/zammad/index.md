@@ -53,9 +53,13 @@ To support the integration of Zammad with authentik, you need to create an appli
     - Set the **Issuer** to <kbd>https://<em>zammad.company</em>/auth/saml/metadata</kbd>.
     - Set the **Audience** to <kbd>https://<em>zammad.company</em>/auth/saml/metadata</kbd>.
     - Set the **Service Provider Binding** to `Post`.
-    - Under **Advanced protocol settings**, add the two **Property Mappings** you created in the previous section, then set the **NameID Property Mapping** to the name property mapping created in the previous section.
+    - Under **Advanced protocol settings**
+      - Add the two **Property Mappings** you created in the previous section
+      - Set the **NameID Property Mapping** to the name property mapping created in the previous section
+      - Select "Signing Certificate" and choose the signing certificate you want. By default it is <kbd>authentik Self-signed Certificate</kbd>
+      - Be sure "Sign assertions" is activated
 - **Configure Bindings** _(optional)_: you can create a [binding](/docs/add-secure-apps/flows-stages/bindings/) (policy, group, or user) to manage the listing and access to applications on a user's **My applications** page.
-
+- 
 3. Click **Submit** to save the new application and provider.
 
 ## zammad Setup
@@ -65,9 +69,12 @@ Configure Zammad SAML settings by going to settings (the gear icon), and selecti
 - Display name: authentik
 - IDP SSO target URL: https://authentik.company/application/saml/zammad/sso/binding/init/
 - IDP single logout target URL: https://zammad.company/auth/saml/slo
-- IDP certificate: ----BEGIN CERTIFICATE---- …
+- IDP certificate:
+  - Go to <kbd>https://authentik.company/if/admin/#/crypto/certificates</kbd> and download your certificate.
+  - Paste the certificate text, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----` lines
 - IDP certificate fingerprint: empty
-- Name Identifier Format: empty
+- Name Identifier Format: <kbd>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</kbd>
+- If you want users to have their accounts created the first time they sign in from Authentik, set `Automatic account link on initial logon` to `yes`
 
 ## Additional Resources
 
